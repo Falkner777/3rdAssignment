@@ -13,6 +13,10 @@ username = 'emqx'
 password = 'public'
 
 def connect_mqtt():
+    """
+    It creates a new MQTT client, sets the username and password, and connects to the MQTT broker
+    :return: The client object is being returned.
+    """
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             print("Connected to MQTT Broker!")
@@ -27,6 +31,13 @@ def connect_mqtt():
 
 
 def publish(client):
+    """
+    > The function `publish` takes a client as an argument and publishes a message to the topic `topic`
+    
+    The function `publish` takes a client as an argument and publishes a message to the topic `topic`
+    
+    :param client: the MQTT client object
+    """
     simpleMessage = "This is the simple message to be sent via MQTT"
    
     time.sleep(1)
@@ -42,6 +53,9 @@ def publish(client):
 
 
 def run():
+    """
+    `run()` connects to the MQTT broker, starts the loop, and publishes a message
+    """
     client = connect_mqtt()
     client.loop_start()
     publish(client)
